@@ -13,18 +13,27 @@ private:
 
 public:
 
-	void Sort(vector<int>& array, int size) override {
+	void Sort(vector<vector<double>>& array, int size) override {
 
-		for (int i = 0; i < size - 1; i++) {
+		for (int line = 0; line < size; line++) {
 
-			for (int j = 0; j < size - i - 1; j++) {
+			for (int i = 0; i < array[line].size() - 1; i++) {
 
-				this -> comparison_counter++;
+				for (int j = 0; j < array[line].size() - i - 1; j++) {
 
-				if (array[j] > array[j + 1]) { swap(array[j], array[j + 1]); this -> swap_counter++; }
+					this->comparison_counter++;
+
+					if (abs(array[line][j]) > abs(array[line][j + 1])) {
+
+						swap(array[line][j], array[line][j + 1]);
+						
+						this->swap_counter++;
+					
+					}
+
+				}
 
 			}
-
 		}
 
 	}

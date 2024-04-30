@@ -10,25 +10,22 @@ class InsertionSort : public ISort {
 
 public:
 
-	void Sort(vector<int>& array, int size) override {
+	void Sort(vector<vector<double>>& array, int size) override {
 	
-	
-		for (int i = 1; i < size; i++) {
+		for (int line = 0; line < size; line++) {
 
-			for (int j = i; j > 0; j--) {
+			for (int i = 1; i < array[line].size(); i++) {
 
-				this -> comparison_counter++;
+				for (int j = i; j > 0 && abs(array[line][j - 1]) > abs(array[line][j]); j--) {
 
-				if (array[j - 1] > array[j]) {
+					this->comparison_counter++;
 
-					this -> swap_counter;
-
-					swap(array[j - 1], array[j]);
+					this->swap_counter++;
+					swap(array[line][j - 1], array[line][j]);
 
 				}
 
 			}
-
 		}
 	
 	}

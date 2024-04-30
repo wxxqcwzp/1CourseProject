@@ -1,0 +1,20 @@
+#include <iostream>
+
+using namespace std;
+
+void show_greeting() {
+
+	cout << "Gaponyako Fedor Dmitrievich; group 4307; number 5" << endl;
+	cout << "Course work." << endl << endl;
+
+
+	cout << "Create a console program to sort an array using:" << endl;
+	cout << "bubble sort, selection sort, insertion sort, shell sort, and quicksort." << endl;
+	cout << "Display the unordered array once, and then display the ordered arrays for each sorting method." << endl;
+	cout << "Also, create a comparative table showing the efficiency of each sorting method," << endl;
+	cout << "including the number of comparisons and variable swaps." << endl << endl;
+
+	cout << "The unordered matrix of N rows and M columns is inputted once" << endl;
+	cout << "(from the keyboard, file, or generated randomly) and is then used for each sorting method." << endl << endl;
+
+}

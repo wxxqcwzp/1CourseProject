@@ -15,7 +15,7 @@ protected:
 
 public:
 
-	virtual void Sort(vector<int>& array, int size) = 0;
+	virtual void Sort(vector<vector<double>>& array, int size) = 0;
 
 
 	int get_swap_counter() { return swap_counter; }

@@ -10,26 +10,24 @@ class ShellSort : public ISort {
 
 public:
 
-	void Sort(vector<int>& array, int size) override {
+	void Sort(vector<vector<double>>& array, int size) override {
 
-		for (int gap = size / 2; gap > 0; gap /= 2) {
+		for (int line = 0; line < size; line++) {
 
-			for (int i = gap; i < size; i++) {
+			for (int gap = array[line].size() / 2; gap > 0; gap /= 2) {
 
-				for (int j = i; j > 0; j--) {
+				for (int i = gap; i < array[line].size(); i++) {
 
-					this -> comparison_counter++;
+					for (int j = i; j >= gap && abs(array[line][j - gap]) > abs(array[line][j]); j-=gap) {
 
-					if (array[j - 1] > array[j]) {
+						this->comparison_counter++;
 
-						swap(array[j - 1], array[j]);
-
-						this -> swap_counter++;
+						swap(array[line][j - gap], array[line][j]);
+						this->swap_counter++;
 
 					}
 
 				}
-
 			}
 		}
 
