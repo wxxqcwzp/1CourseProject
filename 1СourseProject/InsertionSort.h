@@ -16,9 +16,10 @@ public:
 
 			for (int i = 1; i < array[line].size(); i++) {
 
-				for (int j = i; j > 0 && abs(array[line][j - 1]) > abs(array[line][j]); j--) {
+				for (int j = i; j > 0; j--) {
 
 					this->comparison_counter++;
+					if (abs(array[line][j - 1]) <= abs(array[line][j])) { break; }
 
 					this->swap_counter++;
 					swap(array[line][j - 1], array[line][j]);

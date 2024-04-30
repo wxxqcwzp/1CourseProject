@@ -6,6 +6,7 @@
 #include "Utils.h"
 #include "Show_menu.h"
 #include "Files.h"
+#include "Inputs.h"
 
 
 #include <iostream>
@@ -13,31 +14,53 @@
 
 using namespace std;
 
-
+enum menu { USER_INPUT = 1, RANDOM_INPUT, FILE_INPUT, EXIT };
 int main()
 {
     srand(time(0));
     
     show_greeting();
 
-    vector<vector<double>> test = get_matrix_from_file("test1.txt");
-
-    run_sorts(test);
-
-    vector<vector<double>> array = { 
-        { -5, 4, 3, 7, 1 },
-        { 6, 5, -4, 3, 2 },
-        { 7, -6, 5, 4, 3 }
-    };
-
-    run_sorts(array);
-
-    array = set_random_input_matrix();
-
-    run_sorts(array);
+    vector<vector<double>> matrix;
     
-    
-    
+    int user_choice = 0;
+
+    bool repeat = true;
+    do {
+
+        show_menu();
+
+        user_choice = InputInt("Enter menu item", 0, 5);
+
+        switch (user_choice)
+        {
+        case(USER_INPUT) : {
+
+            matrix = set_user_input_matrix();
+            run_sorts(matrix);
+            break;
+
+        }
+        case(RANDOM_INPUT): {
+
+            matrix = set_random_input_matrix();
+            run_sorts(matrix);
+            break;
+
+        }
+
+        case(FILE_INPUT): {
+
+            matrix = import_matrix();
+            run_sorts(matrix);
+            break;
+
+        }
+
+        case(EXIT): { repeat = false; }
+        }
+
+    } while (repeat);
     
 
 }

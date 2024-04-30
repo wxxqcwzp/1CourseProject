@@ -1,4 +1,6 @@
 #include "Inputs.h"
+#include "Files.h"
+#include "Utils.h"
 
 #include <iostream>
 #include <vector>
@@ -91,4 +93,20 @@ void clear_matrix(vector<vector<double>>& matrix) {
 	}
 
 	matrix.clear();
+}
+
+vector<vector<double>> import_matrix() {
+
+	string file;
+
+	cout << "1 - Enter the fullpath to the file;" << endl;
+	cout << "0 - Enter only the filename (for the root folder);" << endl;
+
+	bool user_choice = InputBool("Choose input type:");
+
+	if (user_choice) { file = get_valid_fullpath(); }
+	else { file = get_valid_filename(); }
+
+	return get_matrix_from_file(file);
+
 }

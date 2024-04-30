@@ -15,6 +15,8 @@ using namespace std;
 
 void run_sorts(vector<vector<double>>& array) {
 
+    if (array.empty()) { return; }
+
     BubbleSort bubble_sort;
     SelectionSort selection_sort;
     InsertionSort insertion_sort;

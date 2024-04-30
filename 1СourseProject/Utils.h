@@ -16,3 +16,5 @@ vector<vector<double>> set_user_input_matrix();
 vector<vector<double>> set_random_input_matrix();
 
 void clear_matrix(vector<vector<double>>& matrix);
+
+vector<vector<double>> import_matrix();

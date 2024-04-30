@@ -18,3 +18,12 @@ void show_greeting() {
 	cout << "(from the keyboard, file, or generated randomly) and is then used for each sorting method." << endl << endl;
 
 }
+
+void show_menu() {
+
+	cout << "1 - Set matrix by user input;" << endl;
+	cout << "2 - Set matrix by random input;" << endl;
+	cout << "3 - Set matrix by file input;" << endl;
+	cout << "4 - Exit;" << endl;
+
+}
