@@ -22,11 +22,13 @@ int main()
     show_greeting();
 
     vector<vector<double>> matrix;
+
+    vector<vector<string>> results;
     
     int user_choice = 0;
 
     bool repeat = true;
-    do {
+    /*do {
 
         show_menu();
 
@@ -37,14 +39,14 @@ int main()
         case(USER_INPUT) : {
 
             matrix = set_user_input_matrix();
-            run_sorts(matrix);
+            results = run_sorts(matrix);
             break;
 
         }
         case(RANDOM_INPUT): {
 
             matrix = set_random_input_matrix();
-            run_sorts(matrix);
+            results = run_sorts(matrix);
             break;
 
         }
@@ -52,7 +54,7 @@ int main()
         case(FILE_INPUT): {
 
             matrix = import_matrix();
-            run_sorts(matrix);
+            results = run_sorts(matrix);
             break;
 
         }
@@ -60,7 +62,7 @@ int main()
         case(EXIT): { repeat = false; }
         }
 
-    } while (repeat);
+    } while (repeat);*/
     
 
 }

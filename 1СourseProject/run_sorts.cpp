@@ -13,9 +13,11 @@
 
 using namespace std;
 
-void run_sorts(vector<vector<double>>& array) {
+vector<vector<string>> run_sorts(vector<vector<double>>& array) {
 
-    if (array.empty()) { return; }
+    vector<vector<string>> results{};
+
+    if (array.empty()) { return results; }
 
     BubbleSort bubble_sort;
     SelectionSort selection_sort;
@@ -144,7 +146,7 @@ void run_sorts(vector<vector<double>>& array) {
     -----------------------------------------------------------------------------------------------------*/
 
 
-    vector<vector<string>> results{
+    results = {
 
         { "Algotithm", "Swaps", "Compares"},
         { "Bubble sort", to_string(bubble_sort.get_swap_counter()), to_string(bubble_sort.get_comparison_counter()) },
@@ -164,4 +166,7 @@ void run_sorts(vector<vector<double>>& array) {
     quick_sort.reset_counters();
 
     cout << "------------------------------------------------------------" << endl;
+
+    return results;
+
 }

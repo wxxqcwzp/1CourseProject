@@ -9,7 +9,7 @@ class BubbleSort :public ISort {
 
 private:
 
-	vector<int> array;
+	vector<vector<double>> array;
 
 public:
 
@@ -37,6 +37,8 @@ public:
 		}
 
 	}
+
+
 
 
 

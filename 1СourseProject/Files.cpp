@@ -1,75 +1,27 @@
 #include "Utils.h"
 #include "Inputs.h"
+#include "BubbleSort.h"
+
 
 #include <iostream>
 #include <string>
 #include <vector>
 #include <fstream>
 #include <sstream>
-#include <regex>
 
 using namespace std;
 
-bool is_filepath_valid(string filepath) {
 
-    regex filepath_regex("^(?:[a-zA-Z]\\:|\\\\)\\\\([^\\\\]+\\\\)*[^\\/:*?\"<>|]+\\.txt$");
-
-    if (!regex_match(filepath, filepath_regex)) {
-        cerr << "Error: Invalid file path." << endl;
-        return false;
-    }
-
-    return true;
-}
-
-bool is_filename_valid(string filename) {
-
-    regex filename_regex("^[^\\/:*?\"<>|]+\\.txt");
-
-    if (!regex_match(filename, filename_regex)) {
-        cerr << "Error: Invalid file name." << endl;
-        return false;
-    }
-
-    return true;
-}
-
-string get_valid_fullpath() {
-
-    string fullpath;
-
-    while (true) {
-        fullpath = InputString("Input fullpath to file (only txt acceptable): ");
-
-        if (is_filepath_valid(fullpath)) {
-            return fullpath;
-        }
-    }
-}
-
-string get_valid_filename() {
-
-    string filename;
-
-    while (true) {
-        filename = InputString("Input filename (only txt acceptable): ");
-
-        if (is_filename_valid(filename)) {
-            return filename;
-        }
-    }
-
-}
-
-vector<vector<double>> get_matrix_from_file(string filename) {
+vector<vector<double>> get_matrix_from_file(string filepath) {
 
     vector<vector<double>> matrix;
 
-    ifstream input_file(filename);
-    if (!input_file.is_open()) {
-        cerr << "Error opening file: " << filename << endl;
-        return matrix;
+    while (!is_filepath_valid(filepath)) { 
+        cout << "Error opening file: " << filepath;
+        filepath = InputString("Enter filepath (only txt available): ");
     }
+
+    ifstream input_file(filepath);
 
     string line;
     while (getline(input_file, line)) {
@@ -108,3 +60,49 @@ vector<vector<double>> get_matrix_from_file(string filename) {
     return matrix;
 
 }
+
+
+void save_matrix(vector<vector<double>>& matrix, vector<vector<string>> results, int writing) {
+
+    string filepath;
+
+    while (!is_filepath_valid(filepath)) {
+        cout << "Error opening file: " << filepath;
+        filepath = InputString("Enter filepath (only txt available): ");
+    }
+
+    BubbleSort sorted_matrix;
+
+    if(writing == 1){ ofstream file(filepath, ios::app); }
+    else if (writing == 2) { ofstream file(filepath, ios::trunc); }
+
+    for (int i = 0; i < matrix.size(); i++) {
+
+        for (int j = 0; j < matrix[i].size(); j++) {
+
+            if (j == matrix[i].size() - 1) { file << matrix[i][j] << '\n'; }
+            else{ file << matrix[i][j] << ';'; }
+
+        }
+
+    }
+
+    sorted_matrix.Sort(matrix, matrix.size());
+
+    for (int i = 0; i < matrix.size(); i++) {
+
+        for (int j = 0; j < matrix[i].size(); j++) {
+
+            if (j == matrix[i].size() - 1) { file << matrix[i][j] << '\n'; }
+            else { file << matrix[i][j] << ';'; }
+
+        }
+
+    }
+
+
+
+}
+
+
+

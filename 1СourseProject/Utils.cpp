@@ -7,6 +7,8 @@
 
 using namespace std;
 
+enum save { OVERWRITE = 1, ADD, ANOTHER };
+
 void show_matrix(vector<vector<double>> array, int size, string message) {
 
 	cout << message << endl << endl;
@@ -57,7 +59,7 @@ vector<vector<double>> set_user_input_matrix(){
 
 			cout << "Enter matrix[" << i << "][" << j << "]:";
 
-			matrix[i][j] = InputDouble("", DBL_MIN, DBL_MAX);
+			matrix[i][j] = InputDouble("", -DBL_MAX, DBL_MAX);
 		}
 	}
 
@@ -95,18 +97,24 @@ void clear_matrix(vector<vector<double>>& matrix) {
 	matrix.clear();
 }
 
-vector<vector<double>> import_matrix() {
+void save_results(vector<vector<string>> results) {
 
-	string file;
+	switch (confirm_overwrite()) {
 
-	cout << "1 - Enter the fullpath to the file;" << endl;
-	cout << "0 - Enter only the filename (for the root folder);" << endl;
+	case(OVERWRITE): {
 
-	bool user_choice = InputBool("Choose input type:");
 
-	if (user_choice) { file = get_valid_fullpath(); }
-	else { file = get_valid_filename(); }
 
-	return get_matrix_from_file(file);
+
+		return;
+
+	}
+	case(ADD): {//func
+
+		return;
+	}
+	case(ANOTHER): { return; }
+
+	}
 
 }
